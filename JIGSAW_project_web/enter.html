@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+<meta charset="UTF-8"> 
+<title>Page a</title> 
+<link rel="stylesheet" href="style.css"> 
+</head> 
+<body> 
+<div class="container"> 
+<div class="header"> 
+<span id="reg">Авторизация</span> 
+</div> 
+<div class="content"> 
+<div class="cf"> 
+<form method="post" action="page.php"> 
+Логин:<br> <input type="text" name="log" style="width: 350px;" > 
+<br> 
+Пароль:<br> <input type="password" name="psw" style="width: 250px;" > 
+<br> 
+<input type="submit" name="submit" value="Submit"> 
+</form> 
+<?php 
+if(($_SERVER["REQUEST_METHOD"] == "POST")){ 
+$myfile = fopen("data.txt", "r") or die("Unable to open file!"); 
+$buffer = fread($myfile, filesize("data.txt")); 
+fclose($myfile); 
+if(!strpos($buffer, $_POST['log'])) { 
+$myfile = fopen("data.txt", "a") or die("Unable to open file!"); 
+$l = $_POST['log']; 
+$hash = password_hash($_POST['psw'], PASSWORD_DEFAULT); 
+$text = "\r\n$l\r\n$hash\r\n"; 
+fputs($myfile, $text); 
+fclose($myfile); 
+} else{ 
+echo "Логин занят!"; 
+echo 'Вернуться на страницу регистрации <a href="index.php">Назад</a>'; 
+} 
+
+} 
+
+?> 
+
+</div> 
+
+</div> 
+</div> 
+</body>

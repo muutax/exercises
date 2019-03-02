@@ -1,0 +1,39 @@
+@keyframes colorr { 
+from {background: linear-gradient(90deg,#0078FF, #FF0000);} 
+to {background: linear-gradient(90deg,#FF0000, #0078FF);} 
+} 
+
+
+body{ 
+background-color: white; 
+background-size: contain; 
+} 
+.container{ 
+width: 75%; 
+min-height: 650px; 
+margin: auto; 
+
+
+
+} 
+.header{ 
+text-align: center; 
+
+} 
+.content{ 
+background-color: white; 
+text-align: center; 
+} 
+#reg{ 
+display: block; 
+font-size: 2em; 
+color: black; 
+
+} 
+.cf{ 
+padding-top: 25px; 
+width: 700px; 
+height: 500px; 
+text-align: initial; 
+margin: auto; 
+}
